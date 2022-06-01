@@ -25,10 +25,46 @@ body{
    
 }
 
-.questions{
+.questions {
   
     font-size: 1.5rem;
     margin-left: 700px;
     margin-right: 500px;
+    background-color: azure;
    
+}
+
+.questions label{
+    margin-left: 50px;
+    margin-right: 50px;
+    
+   
+}
+
+input[type="radio"] {
+  
+    font: inherit;
+    width: 1.15em;
+    height: 1.15em;
+    border: 0.15em solid currentColor;
+    border-radius: 50%; 
+}
+input[type=submit] {
+    padding:5px 15px; 
+    background:black; 
+    width: 135px;
+    height: 60px;
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+    margin-left: 1000px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.footer{
+    background-color: silver;
+    color: black;
+    text-align: center;
+    margin: 40px;
 }
