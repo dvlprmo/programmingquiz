@@ -1,65 +1,72 @@
-let result = 0;
-function answerVaildtor(){
+
+
+// create quiz data
+const quizData = [
+    {
+        question: 'What is the name of the last prophet?',
+        a: 'Mohammad',
+        b: 'Jesus',
+        c: 'Noah',
+        d: 'Ibrahim',
+        correct: 'a'
+    },
+    {
+        question: 'What the color of SA flag',
+        a: 'red',
+        b: 'green',
+        c: 'white',
+        d: 'nothing',
+        correct: 'b'
+    },
+    {
+        question: 'What is this?',
+        a: 'nothning',
+        b: 'quiz',
+        c: 'good',
+        d: 'woow',
+        correct: 'b'
+    }, 
+    {
+        question: 'What is age of president Biden?',
+        a: '45',
+        b: '34',
+        c: '80',
+        d: '95',
+        correct: 'c'
+    }
+];
+
+const question = document.getElementById("question")
+const a_text = document.getElementById("a_text");
+const b_text = document.getElementById("b_text");
+const c_text = document.getElementById("c_text");
+const d_text = document.getElementById("d_text");
+const btn = document.getElementById("submit");
+let curretnQuiz = 0; // tracking questions
+loadQuiz();
+
+function loadQuiz(){
+
+    const currentQuizData = quizData[curretnQuiz];
+
+    // load the questions and answers
+    question.innerHTML = currentQuizData.question;
+    a_text.innerHTML = currentQuizData.a;
+    b_text.innerHTML = currentQuizData.b;
+    c_text.innerHTML = currentQuizData.c;
+    d_text.innerHTML = currentQuizData.d;
     
-    // array of actual answers
-    let truth = ['A','B', 'D', 'B'];
-    // array of users radios after many tires
-    let user_truth = []
-    // array of teh actual answers
-    let user_truth_ans= []
-   // to get the whole form of the first question
-   const form_one = document.querySelectorAll('input[name="firstoption"]');
-   
-   // to catch the user input in radio first question..
-   for(let i = 0; i<form_one.length; i++){
-    form_one[i].addEventListener("change", function(e){
-           user_truth.push(this.value)
-           console.log(user_truth);
-         
-       });
-       
-   }
-
-   //  to get the whole form of the senond questoin
-   const form_two = document.querySelectorAll('input[name="secondoption"]');
-   // to catch the user input in radio second question..
-   for(let i=0; i<form_two.length; i++){
-       form_two[i].addEventListener("change", function(){
-        user_truth.push(this.value)
-        console.log(user_truth);
-       })
-   }
-
-    //  to get the whole form of the senond questoin
-    const form_three = document.querySelectorAll('input[name="thirdoption"]');
-    // to catch the user input in radio second question..
-    for(let i=0; i<form_three.length; i++){
-        form_three[i].addEventListener("change", function(){
-         user_truth.push(this.value)
-         console.log(user_truth);
-        })
-    }
-  
-    //  to get the whole form of the senond questoin
-    const form_four = document.querySelectorAll('input[name="fouroption"]');
-    // to catch the user input in radio second question..
-    for(let i=0; i<form_four.length; i++){
-        form_four[i].addEventListener("change", function(){
-         user_truth.push(this.value)
-         console.log(user_truth);
-        })
-
-    }
-
-   
-    for(let i=0; i<truth.length; i++){
-        if(user_truth[i] == truth[i]){
-            result = result + 1;
-        }
-    }
-   console.log(result)
 }
-function clickAlert(){
-    alert("Your result is" + result)
-}
-answerVaildtor();
+
+btn.addEventListener('click', () => {
+    curretnQuiz++;
+
+    if(curretnQuiz < quizData.length ){
+        loadQuiz();
+    }else{
+        alert("Finished");
+    }
+})
+
+
+
