@@ -42,7 +42,12 @@ const b_text = document.getElementById("b_text");
 const c_text = document.getElementById("c_text");
 const d_text = document.getElementById("d_text");
 const btn = document.getElementById("submit");
+const answers = document.querySelectorAll(".answer")
+
 let curretnQuiz = 0; // tracking questions
+let result = undefined;
+let counter = 0;
+let total = 0;
 loadQuiz();
 
 function loadQuiz(){
@@ -60,13 +65,28 @@ function loadQuiz(){
 
 btn.addEventListener('click', () => {
     curretnQuiz++;
-
+    calculateResult()
     if(curretnQuiz < quizData.length ){
         loadQuiz();
-    }else{
-        alert("Finished");
     }
 })
+
+function calculateResult(){
+    const bigdata = quizData[counter];
+    answers.forEach((answer) =>{
+       if(answer.checked){
+           result = answer.id;
+           if(result == bigdata.correct){
+               total++;
+           }
+           counter++
+       }
+    })
+    if(counter == quizData.length){
+        alert("Your result is: " + total + " out of 4")
+    }
+}
+
 
 
 
